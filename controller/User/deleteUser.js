@@ -19,13 +19,13 @@ const deleteUser= async (req, res) => {
             return;
         }
 
-        if(user.admin !== req.payload.id){
-            res.status(400).json({
-                status: 400,
-                error: 'Access denied. You must be an admin to this user.'
-            })
-            return;
-        }
+        // if(user.admin !== req.payload.id){
+        //     res.status(400).json({
+        //         status: 400,
+        //         error: 'Access denied. You must be an admin to this user.'
+        //     })
+        //     return;
+        // }
 
 
         User.remove({ _id: req.params.id },
