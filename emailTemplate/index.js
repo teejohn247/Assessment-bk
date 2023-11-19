@@ -1,6 +1,3 @@
-
-
-
 export const emailTemp = (data, subject) => {
 
     // We noticed a new sign-in to your account using ${detectResult.client.name} version ${detectResult.client.version} 
@@ -53,9 +50,10 @@ return `<!DOCTYPE html>
 
         .header-text {
             font-weight: 600;
-            font-size: 32px;
+            font-size: 24px;
             line-height: 125%;
-            text-align: left;
+            margin-top: 30px;
+            padding:15px;
         }
 
         .email-body {
@@ -88,7 +86,7 @@ return `<!DOCTYPE html>
             <td height="305" style="background-color: #166A37; color: #ffffff; width: 100%">
                 <div style="padding-top: 24px;">
                     <a href="#">
-                    <img src="https://nigenius-sms-bucket.s3.amazonaws.com/1675888849694" title="Nigenius Logo" alt="Nigenius Logo" width="53"/>
+                    <img src="https://www.lasepa.gov.ng/wp-content/uploads/2019/12/las-d.png" title="Lasepa Logo" alt="Lasepa Logo" width="503"/>
                     </a>
                 </div>
                 <h1 class="header-text">${subject}</h1>
@@ -106,7 +104,7 @@ return `<!DOCTYPE html>
                                 Cheers,
                             </p>
                             <p style="font-family: 'DM Sans'; line-height: 24px;font-size: 16px;">
-                                Nigenius Team
+                                LASEPA
                             </p>
                         </div>
                     </div>
@@ -119,7 +117,7 @@ return `<!DOCTYPE html>
             <td style="background-color: #F2F5F9;  padding: 56px 0; font-size: 16px; vertical-align: middle">
                 <div style="margin: 0 auto;">
                     <p>Phone: 080890898756</p>
-                    <p style="padding-top: 12px">Email: contactus@nigenius.com</p>
+                    <p style="padding-top: 12px">Email: contactus@Lasepa.com</p>
                     <div style="padding-top: 12px">
                       
                     </div>
