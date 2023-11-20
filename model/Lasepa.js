@@ -10,7 +10,7 @@ const LasepaSchema = new mongoose.Schema(
     lastName: { type: String,  },
     phoneNumber: { type: String, },
     email: { type: String,},
-    lasrraNumber: { type: String, },
+    lasaraaNumber: { type: String, },
     typeOfPollution: { type: [String], },
     typeOfOrganizationCausingPollution: { type: String, },
     sourceOfPollution:{ type: String,  },

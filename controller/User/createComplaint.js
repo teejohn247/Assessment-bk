@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import User from '../../model/Lasepa';
 import bcrypt from 'bcrypt';
 import { sendEmail } from '../../config/email';
-
+import cloudinary from '../../config/cloudinary';
 import { emailTemp } from '../../emailTemplate';
 import moment from 'moment';
 import csvDownload from 'json-to-csv-export'
@@ -15,6 +15,7 @@ const  useComplaint = async (req, res) => {
     try {
 
         const formData = req.fields;
+        
 
         const {
             title,
@@ -22,7 +23,7 @@ const  useComplaint = async (req, res) => {
             lastName,
             phoneNumber,
             email,
-            lasrraNumber,
+            lasaraaNumber,
             typeOfPollution,
             typeOfOrganizationCausingPollution,
             sourceOfPollution,
@@ -30,23 +31,29 @@ const  useComplaint = async (req, res) => {
             lga,
             briefDescriptionOfNoiseComplaint,
             entries,
-            previousComplaintNumber,
-            evidencePictures,
-            evidenceVideo,
-            evidenceAudio,
-            evidenceDocumentsAndPDFs,
+            previousComplaintNumber,   
             howDidYouHearAboutLasepa,
             additionalComments,
+            evidenceVideo,
+            evidenceAudio,
+            evidenceDocumentsAndPDFs
         } = req.fields;
 
-        console.log(req.fields)
+        const { 
+          evidencePictures,
+         }= req.files;
+        // console.log(req.files)
 
-        const scv = [req.fields]
+        // const scv = [req.fields]
 
-        console.log({scv})
+        // console.log({scv})
+
         
-
-        console.log('hashed')
+        const imageCloud = await cloudinary.uploader.upload(evidencePictures.path, {resource_type: "image"});
+        // const videoCloud = await cloudinary.uploader.upload(evidenceVideo.path, {resource_type: "raw"}); 
+        // const audioCloud = await cloudinary.uploader.upload(evidenceAudio.path, {resource_type: "auto"});
+        // const documentsCloud = await cloudinary.uploader.upload(evidenceDocumentsAndPDFs.path, {resource_type: "raw"});
+       
           
            let user = new User({
                 title,
@@ -54,7 +61,7 @@ const  useComplaint = async (req, res) => {
                 lastName,
                 phoneNumber,
                 email,
-                lasrraNumber,
+                lasaraaNumber,
                 typeOfPollution,
                 typeOfOrganizationCausingPollution,
                 sourceOfPollution,
@@ -63,7 +70,7 @@ const  useComplaint = async (req, res) => {
                 briefDescriptionOfNoiseComplaint,
                 entries,
                 previousComplaintNumber,
-                evidencePictures,
+                evidencePictures: imageCloud.secure_url,
                 evidenceVideo,
                 evidenceAudio,
                 evidenceDocumentsAndPDFs,
@@ -71,8 +78,7 @@ const  useComplaint = async (req, res) => {
                 additionalComments,
             });
 
-           
-
+            res.send(user)
             await user.save().then(async (profile) => {
 
         
@@ -133,7 +139,7 @@ const  useComplaint = async (req, res) => {
                 Last Name: ${lastName} <br>
                 Phone Number: ${phoneNumber}<br>
                 Email: ${email}<br>
-                Lasrra Number: ${lasrraNumber}<br>
+                Lasrra Number: ${lasaraaNumber}<br>
                 Type of Pollution: ${typeOfPollution}<br>
                 Type of Organization Causing Pollution: ${typeOfOrganizationCausingPollution}<br>
                 Source of Pollution: ${sourceOfPollution}<br>
@@ -180,11 +186,12 @@ const  useComplaint = async (req, res) => {
       
 
     } catch (error) {
-        res.status(500).json({
-            status: 500,
-            success: false,
-            error: error
-        })
+      console.log(error)
+        // res.status(500).json({
+        //     status: 500,
+        //     success: false,
+        //     error: error
+        // })
     }
 }
 export default useComplaint;
