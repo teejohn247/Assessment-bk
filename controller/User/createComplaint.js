@@ -49,15 +49,54 @@ const  useComplaint = async (req, res) => {
           liveAudio,
           liveImage
          } = req.files;
-        const imageCloud = await uploadFiles(evidencePictures);
-        // const videoCloud = await uploadFiles(evidenceVideo);
-        // console.log({videoCloud: videoCloud})
 
-         const audioCloud = await uploadFiles(evidenceAudio);
-        const documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
-        const liveImageCloud = await uploadFiles(liveImage);
-        const liveVideoCloud = await uploadFiles(liveVideo);
-        const liveAudioCloud = await uploadFiles(liveAudio);
+
+         let imageCloud;
+         let audioCloud;
+         let documentsCloud;
+         let liveImageCloud;
+         let liveVideoCloud;
+         let liveAudioCloud;
+
+         console.log(req.files)
+
+        //  if(evidencePictures){
+        //  let imageCloud = await uploadFiles(evidencePictures);
+        //  }
+
+        //  if(evidenceVideo){
+        //   // const imageCloud = await uploadFiles(evidencePictures);
+        //  }
+        // // const videoCloud = await uploadFiles(evidenceVideo);
+        // // console.log({videoCloud: videoCloud})
+        
+        // if(evidenceAudio){
+        //   audioCloud = await uploadFiles(evidenceAudio);
+        //   console.log({audioCloud})
+        //  }
+      
+        //  if(evidenceDocumentsAndPDFs){
+        //   documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
+        //   console.log({documentsCloud})
+        //  }
+
+         if(liveImage){
+
+        liveImageCloud = await uploadFiles(liveImage);
+        console.log({liveImageCloud})
+         }
+
+         if(liveVideo){
+          liveVideoCloud = await uploadFiles(liveVideo);
+          console.log({liveVideoCloud})
+         }
+
+        if(liveAudio){
+          liveAudioCloud = await uploadFiles(liveAudio);
+          console.log({liveAudioCloud})
+        }
+       
+
         
            let user = new User({
                 title,
@@ -184,7 +223,7 @@ const  useComplaint = async (req, res) => {
   
              const receivers2 = [
               {
-                email: 'yusuf.mukhtar@aceall.io'
+                email: 'tolu.ajuwon@aceall.io'
               }
             ]
         
