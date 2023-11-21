@@ -53,6 +53,7 @@ const  useComplaint = async (req, res) => {
 
          let imageCloud;
          let audioCloud;
+         let videoCloud;
          let documentsCloud;
          let liveImageCloud;
          let liveVideoCloud;
@@ -60,25 +61,24 @@ const  useComplaint = async (req, res) => {
 
          console.log(req.files)
 
-        //  if(evidencePictures){
-        //  let imageCloud = await uploadFiles(evidencePictures);
-        //  }
+         if(evidencePictures){
+          imageCloud = await uploadFiles(evidencePictures);
+         }
 
-        //  if(evidenceVideo){
-        //   // const imageCloud = await uploadFiles(evidencePictures);
-        //  }
-        // // const videoCloud = await uploadFiles(evidenceVideo);
-        // // console.log({videoCloud: videoCloud})
+         if(evidenceVideo){
+           videoCloud = await uploadFiles(evidenceVideo);
+         }
+        // console.log({videoCloud: videoCloud})
         
-        // if(evidenceAudio){
-        //   audioCloud = await uploadFiles(evidenceAudio);
-        //   console.log({audioCloud})
-        //  }
+        if(evidenceAudio){
+          audioCloud = await uploadFiles(evidenceAudio);
+          console.log({audioCloud})
+         }
       
-        //  if(evidenceDocumentsAndPDFs){
-        //   documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
-        //   console.log({documentsCloud})
-        //  }
+         if(evidenceDocumentsAndPDFs){
+          documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
+          console.log({documentsCloud})
+         }
 
          if(liveImage){
 
@@ -114,7 +114,7 @@ const  useComplaint = async (req, res) => {
                 entries,
                 previousComplaintNumber,
                 evidencePictures: imageCloud,
-                // evidenceVideo: videoCloud,
+                evidenceVideo: videoCloud,
                 evidenceAudio: audioCloud,
                 evidenceDocumentsAndPDFs: documentsCloud,
                 liveImage: liveImageCloud,
@@ -203,11 +203,9 @@ const  useComplaint = async (req, res) => {
                 imageCloud: <a href="${imageCloud}">click here</a><br>
                 audioCloud: <a href="${audioCloud}">click here</a><br>
                 documentsCloud: <a href="${documentsCloud}">click here</a><br>
-                liveImageCloud: <a href="${liveImageCloud}">click here</a><br>
-                liveVideoCloud: <a href="${liveVideoCloud}">click here</a><br>
-                liveAudioCloud: <a href="${liveAudioCloud}">click here</a><br>
-
-              
+                liveImage: ${liveImageCloud? `<a href="${liveImageCloud}">click here</a><br>` : `No Captured Image`}
+                liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}
+                liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}
                 <br>
                 Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
                 <br>
