@@ -1,3 +1,4 @@
+import { number } from 'joi';
 import mongoose from 'mongoose';
 
 
@@ -23,6 +24,10 @@ const LasepaSchema = new mongoose.Schema(
     evidenceVideo: { type: String,  },
     evidenceAudio: { type: String, },
     evidenceDocumentsAndPDFs:{ type: String,},
+    liveAudio: { type: String,  },
+    liveImage: { type: String,  },
+    liveVideo: { type: String, },
+    maxDecibel: { type: String},
     howDidYouHearAboutLasepa: { type: String,  },
     additionalComments: { type: String, },
   },

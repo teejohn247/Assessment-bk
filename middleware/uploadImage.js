@@ -19,16 +19,21 @@ const uploadFiles = async(fileData) => {
             ContentType: image.type // Set the content type of the file
         };
         
+        if (image.type === null) {
+            resolve('');
+            return;
+        }else{
         // Upload the file to S3
-        s3.upload(params, (err, data) => {
-            if (err) {
-                reject(err);
-                // console.log(err);
-            } else {
-                resolve(data.Location);
-            // console.log('File uploaded successfully. S3 location:', data.Location);
-            } 
-        });
+            s3.upload(params, (err, data) => {
+                if (err) {
+                    // reject(err);
+                    console.log(err);
+                } else {
+                    resolve(data);
+                // console.log('File uploaded successfully. S3 location:', data.Location);
+                } 
+            });
+        }
     });
 }
 

@@ -34,7 +34,9 @@ const  useComplaint = async (req, res) => {
             entries,
             previousComplaintNumber,   
             howDidYouHearAboutLasepa,
+            maxDecibel,
             additionalComments,
+
         } = req.fields;
 
         const { 
@@ -42,16 +44,19 @@ const  useComplaint = async (req, res) => {
           evidenceAudio,
           evidenceVideo,
           evidencePictures,
+          liveVideo,
+          liveAudio,
+          liveImage
          } = req.files;
-        // const imageCloud = await uploadFiles(evidencePictures);
-        // const videoCloud = await uploadFiles(evidenceVideo);
+
+        const imageCloud = await uploadFiles(evidencePictures);
+        const videoCloud = await uploadFiles(evidenceVideo);
          const audioCloud = await uploadFiles(evidenceAudio);
-        // const documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
-        // console.log(documentsCloud);
+        const documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
+        const liveImageCloud = await uploadFiles(liveImage);
+        const liveVideoCloud = await uploadFiles(liveVideo);
+        const liveAudioCloud = await uploadFiles(liveAudio);
 
-    
-
-          
            let user = new User({
                 title,
                 firstName,
@@ -67,10 +72,14 @@ const  useComplaint = async (req, res) => {
                 briefDescriptionOfNoiseComplaint,
                 entries,
                 previousComplaintNumber,
-                // evidencePictures: imageCloud,
-                // evidenceVideo: videoCloud,
-                evidenceAudio: audioCloud,
-                // evidenceDocumentsAndPDFs: documentsCloud,
+                evidencePictures: imageCloud.location,
+                evidenceVideo: videoCloud.location,
+                evidenceAudio: audioCloud.location,
+                evidenceDocumentsAndPDFs: documentsCloud.location,
+                liveImage: liveImageCloud.location,
+                liveVideo: liveVideoCloud.location,
+                liveAudio: liveAudioCloud.location,
+                maxDecibel,
                 howDidYouHearAboutLasepa,
                 additionalComments,
             });
@@ -164,12 +173,12 @@ const  useComplaint = async (req, res) => {
   
 //              const receivers2 = [
 //               {
-//                 email: 'tolu.ajuwon@aceall.io'
+//                 email: 'yusuf.mukhtar@aceall.io'
 //               }
 //             ]
         
-//                 await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp);
-//                 await sendEmail(req, res, email, receivers2, 'Employee Invitation', resp2);
+//                 await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp, imageCloud);
+//                 await sendEmail(req, res, email, receivers2, 'Employee Invitation', resp2, imageCloud);
 
 
 
@@ -179,15 +188,16 @@ const  useComplaint = async (req, res) => {
 //                     data: profile
 //                 })
 //             })
-            return
+//             return
       
 
     } catch (error) {
-        res.status(500).json({
-            status: 500,
-            success: false,
-            error: error
-        })
+      console.log(error)
+        // res.status(500).json({
+        //     status: 500,
+        //     success: false,
+        //     error: error
+        // })
     }
 }
 export default useComplaint;
