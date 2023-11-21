@@ -7,6 +7,7 @@ import cloudinary from '../../config/cloudinary';
 import { emailTemp } from '../../emailTemplate';
 import moment from 'moment';
 import csvDownload from 'json-to-csv-export'
+import uploadFiles from '../../middleware/uploadImage';
 
 dotenv.config();
 
@@ -34,26 +35,22 @@ const  useComplaint = async (req, res) => {
             previousComplaintNumber,   
             howDidYouHearAboutLasepa,
             additionalComments,
-            evidenceVideo,
-            evidenceAudio,
-            evidenceDocumentsAndPDFs
         } = req.fields;
 
         const { 
+          evidenceDocumentsAndPDFs,
+          evidenceAudio,
+          evidenceVideo,
           evidencePictures,
-         }= req.files;
-        // console.log(req.files)
-
-        // const scv = [req.fields]
-
-        // console.log({scv})
-
+         } = req.files;
+        const imageCloud = await uploadFiles(evidencePictures);
+        const videoCloud = await uploadFiles(evidenceVideo);
+         const audioCloud = await uploadFiles(evidenceAudio);
+        const documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
         
-        const imageCloud = await cloudinary.uploader.upload(evidencePictures.path, {resource_type: "image"});
-        // const videoCloud = await cloudinary.uploader.upload(evidenceVideo.path, {resource_type: "raw"}); 
-        // const audioCloud = await cloudinary.uploader.upload(evidenceAudio.path, {resource_type: "auto"});
-        // const documentsCloud = await cloudinary.uploader.upload(evidenceDocumentsAndPDFs.path, {resource_type: "raw"});
-       
+
+    
+
           
            let user = new User({
                 title,
@@ -70,10 +67,10 @@ const  useComplaint = async (req, res) => {
                 briefDescriptionOfNoiseComplaint,
                 entries,
                 previousComplaintNumber,
-                evidencePictures: imageCloud.secure_url,
-                evidenceVideo,
-                evidenceAudio,
-                evidenceDocumentsAndPDFs,
+                evidencePictures: imageCloud,
+                evidenceVideo: videoCloud,
+                evidenceAudio: audioCloud,
+                evidenceDocumentsAndPDFs: documentsCloud,
                 howDidYouHearAboutLasepa,
                 additionalComments,
             });
@@ -186,12 +183,11 @@ const  useComplaint = async (req, res) => {
       
 
     } catch (error) {
-      console.log(error)
-        // res.status(500).json({
-        //     status: 500,
-        //     success: false,
-        //     error: error
-        // })
+        res.status(500).json({
+            status: 500,
+            success: false,
+            error: error
+        })
     }
 }
 export default useComplaint;

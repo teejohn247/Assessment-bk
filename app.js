@@ -7,9 +7,11 @@ import cors from 'cors';
 import http from 'http';
 import bodyParser from 'body-parser';
 import multer from 'multer';
-const cloudinary = require('cloudinary').v2;
-const fs = require('fs');
+import s3 from './config/Aws-S3';
 const formidable = require('express-formidable');
+s3
+const fs = require('fs');
+
 
 const upload = multer()
 
@@ -64,9 +66,6 @@ app.use('/images', express.static('images'));
 // app.use(express.static('public'));
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json({
-  limit: '50mb'
-}));
 app.use(cors());
 app.options('*', cors());
 
@@ -93,76 +92,30 @@ app.get('/test', (req, res) => {
 });
 
 
-app.post("/audio/upload", async (req, res) => {
-  // Get the file name and extension with multer
-  const storage = multer.diskStorage({
-    filename: (req, file, cb) => {
-      const fileExt = file.originalname.split(".").pop();
-      const filename = `${new Date().getTime()}.${fileExt}`;
-      cb(null, filename);
-    },
-  });
-
-  // Filter the file to validate if it meets the required audio extension
-  const fileFilter = (req, file, cb) => {
-    if (file.mimetype === "audio/mp3" || file.mimetype === "audio/mpeg") {
-      cb(null, true);
-    } else {
-      cb(
-        {
-          message: "Unsupported File Format",
-        },
-        false
-      );
-    }
-  };
-
-  // Set the storage, file filter and file size with multer
-  const upload = multer({
-    storage,
-    limits: {
-      fieldNameSize: 200,
-      fileSize: 5 * 1024 * 1024,
-    },
-    fileFilter,
-  }).single("audio");
-
-  // upload to cloudinary
-  upload(req, res, (err) => {
-    if (err) {
-      // return res.send(err);
-      console.log(err)
-    }
-
-    // SEND FILE TO CLOUDINARY
-    cloudinary.config({
-      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-      api_key: process.env.CLOUDINARY_API_KEY,
-      api_secret: process.env.CLOUDINARY_API_SECRET,
-    });
-    const { path } = req.files; // file becomes available in req at this point
-
-    const fName = req.files.name;
-    console.log(fName);
-    cloudinary.uploader.upload(
-      path,
-      {
-        resource_type: "auto",
-        public_id: `AudioUploads/${fName}`,
-      },
-
-      // Send cloudinary response or catch error
-      (err, audio) => {
-        if (err) return res.send(err);
-
-        fs.unlinkSync(path);
-        res.send(audio);
-      }
-    );
-  });
-});
-
-
+// app.post('/upload-img', (req, res) => {
+//   const image = req.files.images;
+//   // Specify the bucket name and file path
+//   const bucketName = process.env.AWS_BUCKET_NAME;
+//   const filePath = image.path;
+//   const fileStream = fs.createReadStream(filePath);
+  
+//   // Set the S3 upload parameters
+//   const params = {
+//     Bucket: bucketName,
+//     Key: image.name, // Set the destination path in S3
+//     Body: fileStream,
+//     ContentType: image.type // Set the content type of the file
+//   };
+  
+//   // Upload the file to S3
+//   s3.upload(params, (err, data) => {
+//     if (err) {
+//       console.error('Error uploading file:', err);
+//     } else {
+//       console.log('File uploaded successfully. S3 location:', data.Location);
+//     } 
+//   });
+// });
 
 
 app.use('/api/v1', userRouter);
