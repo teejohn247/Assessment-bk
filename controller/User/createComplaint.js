@@ -16,7 +16,6 @@ const  useComplaint = async (req, res) => {
     try {
 
         const formData = req.fields;
-        
 
         const {
             title,
@@ -56,6 +55,7 @@ const  useComplaint = async (req, res) => {
         const liveImageCloud = await uploadFiles(liveImage);
         const liveVideoCloud = await uploadFiles(liveVideo);
         const liveAudioCloud = await uploadFiles(liveAudio);
+        const imgcloud = imageCloud.location;
 
            let user = new User({
                 title,
@@ -72,7 +72,7 @@ const  useComplaint = async (req, res) => {
                 briefDescriptionOfNoiseComplaint,
                 entries,
                 previousComplaintNumber,
-                evidencePictures: imageCloud.location,
+                evidencePictures: imgcloud,
                 evidenceVideo: videoCloud.location,
                 evidenceAudio: audioCloud.location,
                 evidenceDocumentsAndPDFs: documentsCloud.location,
@@ -84,8 +84,8 @@ const  useComplaint = async (req, res) => {
                 additionalComments,
             });
 
-            res.send(user)
-//             await user.save().then(async (profile) => {
+            console.log(user)
+            // await user.save().then(async (profile) => {
 
         
 //                 let data = `<div>
@@ -182,13 +182,13 @@ const  useComplaint = async (req, res) => {
 
 
 
-//                 res.status(200).json({
-//                     status: 200,
-//                     success: true,
-//                     data: profile
-//                 })
-//             })
-//             return
+            //     res.status(200).json({
+            //         status: 200,
+            //         success: true,
+            //         data: profile
+            //     })
+            // })
+            // return
       
 
     } catch (error) {
