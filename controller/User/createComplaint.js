@@ -69,7 +69,11 @@ const  useComplaint = async (req, res) => {
         const liveAudioCloud = await uploadFiles(liveAudio);
         console.log({liveAudioCloud: liveAudioCloud})
 
-      
+         res.status(200).json({
+          status: 200,
+          message: 'success',
+         })
+
 
 
           //  let user = new User({
