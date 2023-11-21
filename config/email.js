@@ -29,8 +29,7 @@ export const sendEmail = async (
   req, res,
   to, receivers,
   subject,
-  html,
-  imageCloud
+  html
 ) => {
   try {
     // Send an email
@@ -49,7 +48,6 @@ export const sendEmail = async (
       from: process.env.EMAIL_FROM, // Sender's email address
       subject, // Email subject
       htmlContent: html, // HTML version of the email (optional)
-      imageCloud: imageCloud,
     }));
     
     await apiInstance.sendTransacEmail({
@@ -58,14 +56,6 @@ export const sendEmail = async (
       from: process.env.EMAIL_FROM, // Sender's email address
       subject, // Email subject
       htmlContent: html, // HTML version of the email (optional)
-      // attachment five files
-      attachments: [
-        {
-          filename: imageCloud.key,
-          path: imageCloud.location
-        },
-         
-      ],
 
     }).then((res) => {
       console.log('Email sent successfully.', res);

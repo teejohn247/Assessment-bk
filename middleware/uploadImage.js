@@ -29,7 +29,7 @@ const uploadFiles = async(fileData) => {
                     // reject(err);
                     console.log(err);
                 } else {
-                    resolve(data);
+                    resolve(data.Location);
                 // console.log('File uploaded successfully. S3 location:', data.Location);
                 } 
             });
