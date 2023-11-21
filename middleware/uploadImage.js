@@ -5,7 +5,6 @@ import fs from "fs";
 const uploadFiles = async(fileData) => {
     return new Promise((resolve, reject) => {
         const image = fileData;
-        console.log(image)
         
         // Specify the bucket name and file path
         const bucketName = process.env.AWS_BUCKET_NAME;
