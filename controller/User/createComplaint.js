@@ -37,6 +37,8 @@ const  useComplaint = async (req, res) => {
             additionalComments,
 
         } = req.fields;
+        
+        console.log(req.fields)
 
         const { 
           evidenceDocumentsAndPDFs,
@@ -47,7 +49,7 @@ const  useComplaint = async (req, res) => {
           liveAudio,
           liveImage
          } = req.files;
-
+         console.log(req.files)
         const imageCloud = await uploadFiles(evidencePictures);
         const videoCloud = await uploadFiles(evidenceVideo);
          const audioCloud = await uploadFiles(evidenceAudio);
@@ -84,7 +86,7 @@ const  useComplaint = async (req, res) => {
                 additionalComments,
             });
 
-            console.log(user)
+            // console.log(user)
             // await user.save().then(async (profile) => {
 
         
