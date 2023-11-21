@@ -48,11 +48,11 @@ const  useComplaint = async (req, res) => {
           liveAudio,
           liveImage
          } = req.files;
-        const imageCloud = await uploadFiles(evidencePictures);
-        console.log({imageCloud: imageCloud})
+        // const imageCloud = await uploadFiles(evidencePictures);
+        // console.log({imageCloud: imageCloud})
 
-        const videoCloud = await uploadFiles(evidenceVideo);
-        console.log({videoCloud: videoCloud})
+        // const videoCloud = await uploadFiles(evidenceVideo);
+        // console.log({videoCloud: videoCloud})
 
          const audioCloud = await uploadFiles(evidenceAudio);
          console.log({audioCloud: audioCloud})
@@ -62,7 +62,7 @@ const  useComplaint = async (req, res) => {
 
         const liveImageCloud = await uploadFiles(liveImage);
         console.log({liveImageCloud: liveImageCloud})
-        
+
         const liveVideoCloud = await uploadFiles(liveVideo);
         console.log({liveVideoCloud: liveVideoCloud}) 
 
