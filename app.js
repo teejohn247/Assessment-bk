@@ -92,30 +92,30 @@ app.get('/test', (req, res) => {
 });
 
 
-// app.post('/upload-img', (req, res) => {
-//   const image = req.files.images;
-//   // Specify the bucket name and file path
-//   const bucketName = process.env.AWS_BUCKET_NAME;
-//   const filePath = image.path;
-//   const fileStream = fs.createReadStream(filePath);
+app.post('/upload-img', (req, res) => {
+  const image = req.files.images;
+  // Specify the bucket name and file path
+  const bucketName = process.env.AWS_BUCKET_NAME;
+  const filePath = image.path;
+  const fileStream = fs.createReadStream(filePath);
   
-//   // Set the S3 upload parameters
-//   const params = {
-//     Bucket: bucketName,
-//     Key: image.name, // Set the destination path in S3
-//     Body: fileStream,
-//     ContentType: image.type // Set the content type of the file
-//   };
+  // Set the S3 upload parameters
+  const params = {
+    Bucket: bucketName,
+    Key: image.name, // Set the destination path in S3
+    Body: fileStream,
+    ContentType: image.type // Set the content type of the file
+  };
   
-//   // Upload the file to S3
-//   s3.upload(params, (err, data) => {
-//     if (err) {
-//       console.error('Error uploading file:', err);
-//     } else {
-//       console.log('File uploaded successfully. S3 location:', data.Location);
-//     } 
-//   });
-// });
+  // Upload the file to S3
+  s3.upload(params, (err, data) => {
+    if (err) {
+      console.error('Error uploading file:', err);
+    } else {
+      console.log('File uploaded successfully. S3 location:', data);
+    } 
+  });
+});
 
 
 app.use('/api/v1', userRouter);

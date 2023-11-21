@@ -43,11 +43,11 @@ const  useComplaint = async (req, res) => {
           evidenceVideo,
           evidencePictures,
          } = req.files;
-        const imageCloud = await uploadFiles(evidencePictures);
-        const videoCloud = await uploadFiles(evidenceVideo);
+        // const imageCloud = await uploadFiles(evidencePictures);
+        // const videoCloud = await uploadFiles(evidenceVideo);
          const audioCloud = await uploadFiles(evidenceAudio);
-        const documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
-        
+        // const documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
+        // console.log(documentsCloud);
 
     
 
@@ -67,118 +67,118 @@ const  useComplaint = async (req, res) => {
                 briefDescriptionOfNoiseComplaint,
                 entries,
                 previousComplaintNumber,
-                evidencePictures: imageCloud,
-                evidenceVideo: videoCloud,
+                // evidencePictures: imageCloud,
+                // evidenceVideo: videoCloud,
                 evidenceAudio: audioCloud,
-                evidenceDocumentsAndPDFs: documentsCloud,
+                // evidenceDocumentsAndPDFs: documentsCloud,
                 howDidYouHearAboutLasepa,
                 additionalComments,
             });
 
             res.send(user)
-            await user.save().then(async (profile) => {
+//             await user.save().then(async (profile) => {
 
         
-                let data = `<div>
-                <p style="padding: 32px 0; text-align: left !important; font-weight: 700; font-size: 20px;font-family: 'DM Sans';">
-                Hi ${firstName},
-                </p> 
+//                 let data = `<div>
+//                 <p style="padding: 32px 0; text-align: left !important; font-weight: 700; font-size: 20px;font-family: 'DM Sans';">
+//                 Hi ${firstName},
+//                 </p> 
         
-                <p style="font-size: 16px; text-align: left !important; font-weight: 300;">
-                Thank you for taking the initiative to report environmental pollution in Lagos State. Your feedback is crucial in our efforts to maintain a healthy and sustainable environment.
-                <br> <br>
-                This email is to acknowledge the receipt of your complaint. We appreciate your commitment to creating a cleaner and safer community.
-                <br> <br>
-                Our team is currently reviewing the details you provided, and we will take the necessary steps to address the issue promptly. Please be assured that your concerns are important to us, and we will keep you informed of any developments in the resolution process.
-                <br> <br>
-                If you have any additional information or concerns, feel free to respond to this email.
-                <br> <br>
-                Thank you for being an active participant in environmental stewardship.
-                <br> <br>
-                Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
+//                 <p style="font-size: 16px; text-align: left !important; font-weight: 300;">
+//                 Thank you for taking the initiative to report environmental pollution in Lagos State. Your feedback is crucial in our efforts to maintain a healthy and sustainable environment.
+//                 <br> <br>
+//                 This email is to acknowledge the receipt of your complaint. We appreciate your commitment to creating a cleaner and safer community.
+//                 <br> <br>
+//                 Our team is currently reviewing the details you provided, and we will take the necessary steps to address the issue promptly. Please be assured that your concerns are important to us, and we will keep you informed of any developments in the resolution process.
+//                 <br> <br>
+//                 If you have any additional information or concerns, feel free to respond to this email.
+//                 <br> <br>
+//                 Thank you for being an active participant in environmental stewardship.
+//                 <br> <br>
+//                 Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
                 
-                <br><br>
-                </p>
+//                 <br><br>
+//                 </p>
                 
-                <div>`
+//                 <div>`
         
-               let resp = emailTemp(data, 'Complaint Acknowledgment - Environmental Pollution Report')
+//                let resp = emailTemp(data, 'Complaint Acknowledgment - Environmental Pollution Report')
     
     
-               const receivers = [
-                {
-                  email: email
-                }
-              ]
+//                const receivers = [
+//                 {
+//                   email: email
+//                 }
+//               ]
 
 
-              let data2 = `<div>
-              <p style="padding: 32px 0; text-align: left !important; font-weight: 700; font-size: 20px;font-family: 'DM Sans';">
-              Hi ${firstName},
-              </p> 
+//               let data2 = `<div>
+//               <p style="padding: 32px 0; text-align: left !important; font-weight: 700; font-size: 20px;font-family: 'DM Sans';">
+//               Hi ${firstName},
+//               </p> 
       
-              <p style="font-size: 16px; text-align: left !important; font-weight: 300;">
+//               <p style="font-size: 16px; text-align: left !important; font-weight: 300;">
              
-                A new environmental pollution complaint has been lodged for Lagos State. Below are the details:
-                <br>
-                <br>
-                *Complainant's Information:*<br>
-                - Name: ${firstName} ${lastName} <br>
-                - Email: ${email} <br>
-                - Phone: ${phoneNumber} <br>
-                <br> <br>
-                *Complaint Details:*
-               <br>
+//                 A new environmental pollution complaint has been lodged for Lagos State. Below are the details:
+//                 <br>
+//                 <br>
+//                 *Complainant's Information:*<br>
+//                 - Name: ${firstName} ${lastName} <br>
+//                 - Email: ${email} <br>
+//                 - Phone: ${phoneNumber} <br>
+//                 <br> <br>
+//                 *Complaint Details:*
+//                <br>
            
-<br>
-                Title : ${title} <br>
-                First Name: ${firstName} <br>
-                Last Name: ${lastName} <br>
-                Phone Number: ${phoneNumber}<br>
-                Email: ${email}<br>
-                Lasrra Number: ${lasaraaNumber}<br>
-                Type of Pollution: ${typeOfPollution}<br>
-                Type of Organization Causing Pollution: ${typeOfOrganizationCausingPollution}<br>
-                Source of Pollution: ${sourceOfPollution}<br>
-                Address of the Pollution: ${addressOfThePollution}<br>
-                LGA: ${lga}<br>
-                Brief Description of Noise Complaint: ${briefDescriptionOfNoiseComplaint}<br>
-                Entries: ${entries}<br>
-                Previous Complaint Number:${previousComplaintNumber}<br>
-                Evidence Documents: ${evidenceDocumentsAndPDFs}<br>
-                Additional Comments: ${additionalComments}<br>
-                Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
+// <br>
+//                 Title : ${title} <br>
+//                 First Name: ${firstName} <br>
+//                 Last Name: ${lastName} <br>
+//                 Phone Number: ${phoneNumber}<br>
+//                 Email: ${email}<br>
+//                 Lasrra Number: ${lasaraaNumber}<br>
+//                 Type of Pollution: ${typeOfPollution}<br>
+//                 Type of Organization Causing Pollution: ${typeOfOrganizationCausingPollution}<br>
+//                 Source of Pollution: ${sourceOfPollution}<br>
+//                 Address of the Pollution: ${addressOfThePollution}<br>
+//                 LGA: ${lga}<br>
+//                 Brief Description of Noise Complaint: ${briefDescriptionOfNoiseComplaint}<br>
+//                 Entries: ${entries}<br>
+//                 Previous Complaint Number:${previousComplaintNumber}<br>
+//                 Evidence Documents: ${evidenceDocumentsAndPDFs}<br>
+//                 Additional Comments: ${additionalComments}<br>
+//                 Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
               
-                <br>
-                Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
-                <br>
-                Thank you for your prompt attention to this matter.
-                <br> <br>   
-              <br><br>
-              </p>
+//                 <br>
+//                 Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
+//                 <br>
+//                 Thank you for your prompt attention to this matter.
+//                 <br> <br>   
+//               <br><br>
+//               </p>
               
-              <div>`
+//               <div>`
       
-             let resp2 = emailTemp(data2, 'Complaint Acknowledgment - Environmental Pollution Report')
+//              let resp2 = emailTemp(data2, 'Complaint Acknowledgment - Environmental Pollution Report')
   
   
-             const receivers2 = [
-              {
-                email: 'tolu.ajuwon@aceall.io'
-              }
-            ]
+//              const receivers2 = [
+//               {
+//                 email: 'tolu.ajuwon@aceall.io'
+//               }
+//             ]
         
-                await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp);
-                await sendEmail(req, res, email, receivers2, 'Employee Invitation', resp2);
+//                 await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp);
+//                 await sendEmail(req, res, email, receivers2, 'Employee Invitation', resp2);
 
 
 
-                res.status(200).json({
-                    status: 200,
-                    success: true,
-                    data: profile
-                })
-            })
+//                 res.status(200).json({
+//                     status: 200,
+//                     success: true,
+//                     data: profile
+//                 })
+//             })
             return
       
 

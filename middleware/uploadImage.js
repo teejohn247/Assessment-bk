@@ -5,6 +5,7 @@ import fs from "fs";
 const uploadFiles = async(fileData) => {
     return new Promise((resolve, reject) => {
         const image = fileData;
+        
         // Specify the bucket name and file path
         const bucketName = process.env.AWS_BUCKET_NAME;
         const filePath = image.path;
@@ -22,6 +23,7 @@ const uploadFiles = async(fileData) => {
         s3.upload(params, (err, data) => {
             if (err) {
                 reject(err);
+                // console.log(err);
             } else {
                 resolve(data.Location);
             // console.log('File uploaded successfully. S3 location:', data.Location);
