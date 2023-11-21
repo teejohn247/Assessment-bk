@@ -38,7 +38,6 @@ const  useComplaint = async (req, res) => {
 
         } = req.fields;
         
-        console.log(req.fields)
 
         const { 
           evidenceDocumentsAndPDFs,
@@ -49,7 +48,6 @@ const  useComplaint = async (req, res) => {
           liveAudio,
           liveImage
          } = req.files;
-         console.log(req.files)
         const imageCloud = await uploadFiles(evidencePictures);
         const videoCloud = await uploadFiles(evidenceVideo);
          const audioCloud = await uploadFiles(evidenceAudio);
@@ -57,34 +55,36 @@ const  useComplaint = async (req, res) => {
         const liveImageCloud = await uploadFiles(liveImage);
         const liveVideoCloud = await uploadFiles(liveVideo);
         const liveAudioCloud = await uploadFiles(liveAudio);
-        const imgcloud = imageCloud.location;
 
-           let user = new User({
-                title,
-                firstName,
-                lastName,
-                phoneNumber,
-                email,
-                lasaraaNumber,
-                typeOfPollution,
-                typeOfOrganizationCausingPollution,
-                sourceOfPollution,
-                addressOfThePollution,
-                lga,
-                briefDescriptionOfNoiseComplaint,
-                entries,
-                previousComplaintNumber,
-                evidencePictures: imgcloud,
-                evidenceVideo: videoCloud.location,
-                evidenceAudio: audioCloud.location,
-                evidenceDocumentsAndPDFs: documentsCloud.location,
-                liveImage: liveImageCloud.location,
-                liveVideo: liveVideoCloud.location,
-                liveAudio: liveAudioCloud.location,
-                maxDecibel,
-                howDidYouHearAboutLasepa,
-                additionalComments,
-            });
+        console.log({imageCloud, videoCloud, audioCloud, documentsCloud, liveImageCloud, liveVideoCloud, liveAudioCloud})
+
+
+          //  let user = new User({
+          //       title,
+          //       firstName,
+          //       lastName,
+          //       phoneNumber,
+          //       email,
+          //       lasaraaNumber,
+          //       typeOfPollution,
+          //       typeOfOrganizationCausingPollution,
+          //       sourceOfPollution,
+          //       addressOfThePollution,
+          //       lga,
+          //       briefDescriptionOfNoiseComplaint,
+          //       entries,
+          //       previousComplaintNumber,
+          //       evidencePictures: imgcloud,
+          //       evidenceVideo: videoCloud.location,
+          //       evidenceAudio: audioCloud.location,
+          //       evidenceDocumentsAndPDFs: documentsCloud.location,
+          //       liveImage: liveImageCloud.location,
+          //       liveVideo: liveVideoCloud.location,
+          //       liveAudio: liveAudioCloud.location,
+          //       maxDecibel,
+          //       howDidYouHearAboutLasepa,
+          //       additionalComments,
+          //   });
 
             // console.log(user)
             // await user.save().then(async (profile) => {
