@@ -199,7 +199,7 @@ const  useComplaint = async (req, res) => {
                 Evidence Documents: ${evidenceDocumentsAndPDFs}<br>
                 Additional Comments: ${additionalComments}<br>
                 Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
-                geoLocation: ${geoLocation}<br>
+                imageTimestamp: ${geoLocation}<br>
                 imageCloud: <a href="${imageCloud}">click here</a><br>
                 audioCloud: <a href="${audioCloud}">click here</a><br>
                 documentsCloud: <a href="${documentsCloud}">click here</a><br>
