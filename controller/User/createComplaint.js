@@ -203,7 +203,7 @@ const  useComplaint = async (req, res) => {
                 imageCloud: <a href="${imageCloud}">click here</a><br>
                 audioCloud: <a href="${audioCloud}">click here</a><br>
                 documentsCloud: <a href="${documentsCloud}">click here</a><br>
-                liveImage: ${liveImageCloud? `<a href="${liveImageCloud}">click here</a><br>` : `No Captured Image`}
+                liveImage: ${liveImageCloud ? `<a href="${liveImageCloud}">click here</a><br>` : `No Captured Image`}
                 liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}
                 liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}
                 <br>
