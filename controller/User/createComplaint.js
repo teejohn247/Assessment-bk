@@ -200,6 +200,7 @@ const  useComplaint = async (req, res) => {
                 Additional Comments: ${additionalComments}<br>
                 Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
                 imageTimestamp: ${geoLocation}<br>
+                maxDecibel: ${maxDecibel}<br>
                 imageCloud: <a href="${imageCloud}">click here</a><br>
                 audioCloud: <a href="${audioCloud}">click here</a><br>
                 videoCloud: <a href="${videoCloud}">click here</a><br>
