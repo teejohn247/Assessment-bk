@@ -197,13 +197,13 @@ const  useComplaint = async (req, res) => {
                 Brief Description of Noise Complaint: ${briefDescriptionOfNoiseComplaint}<br>
                 Entries: ${entries}<br>
                 Previous Complaint Number:${previousComplaintNumber}<br>
-                Evidence Documents: ${evidenceDocumentsAndPDFs}<br>
                 Additional Comments: ${additionalComments}<br>
                 Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
                 imageTimestamp: ${geoLocation}<br>
                 imageCloud: <a href="${imageCloud}">click here</a><br>
                 audioCloud: <a href="${audioCloud}">click here</a><br>
-                documentsCloud: <a href="${documentsCloud}">click here</a><br>
+                videoCloud: <a href="${videoCloud}">click here</a><br>
+                Evidence Documents: <a href="${documentsCloud}">click here</a><br>
                 liveImage: ${liveImageCloud ? `<a href="${liveImageCloud}">click here</a><br>` : `No Captured Image`}<br>
                 liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
                 liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
