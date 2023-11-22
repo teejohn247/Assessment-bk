@@ -59,41 +59,42 @@ const  useComplaint = async (req, res) => {
          let liveVideoCloud;
          let liveAudioCloud;
 
-         console.log(req.files)
+        //  console.log(req.files)
 
          if(evidencePictures){
           imageCloud = await uploadFiles(evidencePictures);
+          // console.log({imageCloud})
          }
 
          if(evidenceVideo){
            videoCloud = await uploadFiles(evidenceVideo);
+
          }
-        // console.log({videoCloud: videoCloud})
         
         if(evidenceAudio){
           audioCloud = await uploadFiles(evidenceAudio);
-          console.log({audioCloud})
+          // console.log({audioCloud})
          }
       
          if(evidenceDocumentsAndPDFs){
           documentsCloud = await uploadFiles(evidenceDocumentsAndPDFs);
-          console.log({documentsCloud})
+          // console.log({documentsCloud})
          }
 
          if(liveImage){
 
         liveImageCloud = await uploadFiles(liveImage);
-        console.log({liveImageCloud})
+        // console.log({liveImageCloud})
          }
 
          if(liveVideo){
           liveVideoCloud = await uploadFiles(liveVideo);
-          console.log({liveVideoCloud})
+          // console.log({liveVideoCloud})
          }
 
         if(liveAudio){
           liveAudioCloud = await uploadFiles(liveAudio);
-          console.log({liveAudioCloud})
+          // console.log({liveAudioCloud})
         }
        
 
@@ -126,7 +127,7 @@ const  useComplaint = async (req, res) => {
                 geoLocation
             });
 
-            
+            console.log(user)
             await user.save().then(async (profile) => {
 
         
@@ -203,9 +204,9 @@ const  useComplaint = async (req, res) => {
                 imageCloud: <a href="${imageCloud}">click here</a><br>
                 audioCloud: <a href="${audioCloud}">click here</a><br>
                 documentsCloud: <a href="${documentsCloud}">click here</a><br>
-                liveImage: ${liveImageCloud ? `<a href="${liveImageCloud}">click here</a><br>` : `No Captured Image`}
-                liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}
-                liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}
+                liveImage: ${liveImageCloud ? `<a href="${liveImageCloud}">click here</a><br>` : `No Captured Image`}<br>
+                liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
+                liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
                 <br>
                 Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
                 <br>
@@ -225,8 +226,8 @@ const  useComplaint = async (req, res) => {
               }
             ]
         
-                await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp, imageCloud);
-                await sendEmail(req, res, email, receivers2, 'Employee Invitation', resp2, imageCloud);
+                await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp);
+                await sendEmail(req, res, email, receivers2, 'Employee Invitation', resp2);
 
 
 
