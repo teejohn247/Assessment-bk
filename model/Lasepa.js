@@ -30,6 +30,8 @@ const LasepaSchema = new mongoose.Schema(
     maxDecibel: { type: String},
     howDidYouHearAboutLasepa: { type: String,  },
     additionalComments: { type: String, },
+    complaintNumber: { type: String, },
+
   },
   { timestamps: true },
 );

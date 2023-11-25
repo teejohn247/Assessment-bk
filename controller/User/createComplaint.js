@@ -98,6 +98,8 @@ const  useComplaint = async (req, res) => {
         }
        
 
+        let complaintNumber = String(Date.now())
+
         
            let user = new User({
                 title,
@@ -124,7 +126,8 @@ const  useComplaint = async (req, res) => {
                 maxDecibel,
                 howDidYouHearAboutLasepa,
                 additionalComments,
-                geoLocation
+                geoLocation,
+                complaintNumber
             });
 
             console.log(user)
@@ -148,7 +151,7 @@ const  useComplaint = async (req, res) => {
                 Thank you for being an active participant in environmental stewardship.
                 <br> <br>
                 Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
-                
+                ComplaintNumber: ${complaintNumber}
                 <br><br>
                 </p>
                 
@@ -201,13 +204,13 @@ const  useComplaint = async (req, res) => {
                 Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
                 imageTimestamp: ${geoLocation}<br>
                 maxDecibel: ${maxDecibel}<br>
-                imageCloud: <a href="${imageCloud}">click here</a><br>
-                audioCloud: <a href="${audioCloud}">click here</a><br>
-                videoCloud: <a href="${videoCloud}">click here</a><br>
-                Evidence Documents: <a href="${documentsCloud}">click here</a><br>
+                image: ${imageCloud ? `<a href="${imageCloud}">click here</a><br>` : `No Image`}<br> 
+                audio:  ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
+                video: ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
                 liveImage: ${liveImageCloud ? `<a href="${liveImageCloud}">click here</a><br>` : `No Captured Image`}<br>
                 liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
                 liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
+                ComplaintNumber: ${complaintNumber}
                 <br>
                 Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
                 <br>
