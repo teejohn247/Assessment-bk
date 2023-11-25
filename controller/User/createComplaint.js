@@ -162,7 +162,7 @@ const  useComplaint = async (req, res) => {
     
                const receivers = [
                 {
-                  email: email
+                  email: 'jidelawani@gmail.com'
                 }
               ]
 
@@ -210,7 +210,7 @@ const  useComplaint = async (req, res) => {
                 liveImage: ${liveImageCloud ? `<a href="${liveImageCloud}">click here</a><br>` : `No Captured Image`}<br>
                 liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
                 liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
-                ComplaintNumber: ${complaintNumber}
+                ComplaintNumber: ${complaintNumber} <br>
                 <br>
                 Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
                 <br>
