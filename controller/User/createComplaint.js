@@ -226,7 +226,7 @@ const  useComplaint = async (req, res) => {
   
              const receivers2 = [
               {
-                email: 'tolu.ajuwon@aceall.io'
+                email: 'jolaoluwa@gmail.com'
               }
             ]
         
