@@ -221,7 +221,7 @@ const  useComplaint = async (req, res) => {
               
               <div>`
               
-             let resp2 = emailTemp(data2, 'Complaint Acknowledgment - Environmental Pollution Report')
+             let resp2 = emailTemp(data2, 'Complaints tracker   : New Submission')
   
   
              const receivers2 = [
@@ -231,7 +231,7 @@ const  useComplaint = async (req, res) => {
             ]
         
                 await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp);
-                await sendEmail(req, res, email, receivers2, 'Employee Invitation', resp2);
+                await sendEmail(req, res, email, receivers2, 'Complaints tracker : New Submission', resp2);
 
 
 
