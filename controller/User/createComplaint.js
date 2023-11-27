@@ -162,7 +162,7 @@ const  useComplaint = async (req, res) => {
     
                const receivers = [
                 {
-                  email: 'jidelawani@gmail.com'
+                  email: email
                 }
               ]
 
