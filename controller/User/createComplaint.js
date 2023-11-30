@@ -8,6 +8,16 @@ import { emailTemp } from '../../emailTemplate';
 import moment from 'moment';
 import csvDownload from 'json-to-csv-export'
 import uploadFiles from '../../middleware/uploadImage';
+import sharp from "sharp";
+import got from "got";
+import axios from "axios";
+import LocalFileData from 'get-file-object-from-local-path'
+import uploadWaterMark from '../../middleware/watermarkedImage';
+
+
+
+const path= require('path');
+const fs = require('fs');
 
 dotenv.config();
 
@@ -262,6 +272,7 @@ const compositeImageBuffer =
        <br> <br>
        Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
        ComplaintNumber: ${complaintNumber}
+       liveImage: ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
        <br><br>
        </p>
        
