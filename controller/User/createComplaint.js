@@ -175,8 +175,8 @@ const metadata = await sharp(imageBuffer).metadata();
 console.log({metadata})
 
 // Access the width and height
-const width = metadata.width;
-const height = metadata.height;
+const width = metadata.width < 800 ? metadata.width * 10 : metadata.width;
+const height = metadata.height < 800 ? metadata.height * 10 : metadata.height;
 
 console.log('Width:', width);
 console.log('Height:', height);
