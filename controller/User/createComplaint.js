@@ -119,6 +119,9 @@ if (!fs.existsSync(publicDirPath)) {
     fs.mkdirSync(publicDirPath);
 }
 
+if(liveImage){
+
+
 let newPath = path.join(publicDirPath, liveImage.name);
 let rawData = fs.readFileSync(liveImage.path);
 
@@ -215,6 +218,8 @@ const compositeImageBuffer =
        type: metadata.format,
        name: fileName
   }
+
+  
 
   if(data){
     geoImage = await uploadWaterMark(data, images);
@@ -366,6 +371,161 @@ const compositeImageBuffer =
 
 
 })
+} else{
+
+
+
+  if(data){
+    geoImage = await uploadWaterMark(data, images);
+   }
+
+   console.log({res})
+   let user = new User({
+       title,
+       firstName,
+       lastName,
+       phoneNumber,
+       email,
+       lasaraaNumber,
+       typeOfPollution,
+       typeOfOrganizationCausingPollution,
+       sourceOfPollution,
+       addressOfThePollution,
+       lga,
+       briefDescriptionOfNoiseComplaint,
+       entries,
+       previousComplaintNumber,
+       evidencePictures: imageCloud,
+       evidenceVideo: videoCloud,
+       evidenceAudio: audioCloud,
+       evidenceDocumentsAndPDFs: documentsCloud,
+       liveImage: liveImageCloud,
+       liveVideo: liveVideoCloud,
+       liveAudio: liveAudioCloud,
+       maxDecibel,
+       howDidYouHearAboutLasepa,
+       additionalComments,
+       geoLocation,
+       complaintNumber
+   });
+
+   console.log(user)
+   await user.save().then(async (profile) => {
+
+
+       let data = `<div>
+       <p style="padding: 32px 0; text-align: left !important; font-weight: 700; font-size: 20px;font-family: 'DM Sans';">
+       Hi ${firstName},
+       </p> 
+
+       <p style="font-size: 16px; text-align: left !important; font-weight: 300;">
+       Thank you for taking the initiative to report environmental pollution in Lagos State. Your feedback is crucial in our efforts to maintain a healthy and sustainable environment.
+       <br> <br>
+       This email is to acknowledge the receipt of your complaint. We appreciate your commitment to creating a cleaner and safer community.
+       <br> <br>
+       Our team is currently reviewing the details you provided, and we will take the necessary steps to address the issue promptly. Please be assured that your concerns are important to us, and we will keep you informed of any developments in the resolution process.
+       <br> <br>
+       If you have any additional information or concerns, feel free to respond to this email.
+       <br> <br>
+       Thank you for being an active participant in environmental stewardship.
+       <br> <br>
+       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
+       ComplaintNumber: ${complaintNumber}
+       liveImage: ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
+       <br><br>
+       </p>
+       
+       <div>`
+
+      let resp = emailTemp(data, 'Complaint Acknowledgment - Environmental Pollution Report')
+
+
+      const receivers = [   
+       {
+         email: email
+       }
+     ]
+
+
+     let data2 = `<div>
+     <p style="padding: 32px 0; text-align: left !important; font-weight: 700; font-size: 20px;font-family: 'DM Sans';">
+     Hi ${firstName},
+     </p> 
+
+     <p style="font-size: 16px; text-align: left !important; font-weight: 300;">
+    
+       A new environmental pollution complaint has been lodged for Lagos State. Below are the details:
+       <br>
+       <br>
+       *Complainant's Information:*<br>
+       - Name: ${firstName} ${lastName} <br>
+       - Email: ${email} <br>
+       - Phone: ${phoneNumber} <br>
+       <br> <br>
+       *Complaint Details:*
+      <br>
+      <br>
+       Title : ${title} <br>
+       First Name: ${firstName} <br>
+       Last Name: ${lastName} <br>
+       Phone Number: ${phoneNumber}<br>
+       Email: ${email}<br>
+       Lasrra Number: ${lasaraaNumber}<br>
+       Type of Pollution: ${typeOfPollution}<br>
+       Type of Organization Causing Pollution: ${typeOfOrganizationCausingPollution}<br>
+       Source of Pollution: ${sourceOfPollution}<br>
+       Address of the Pollution: ${addressOfThePollution}<br>
+       LGA: ${lga}<br>
+       Brief Description of Noise Complaint: ${briefDescriptionOfNoiseComplaint}<br>
+       Entries: ${entries}<br>
+       Previous Complaint Number:${previousComplaintNumber}<br>
+       Additional Comments: ${additionalComments}<br>
+       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
+       imageTimestamp: ${geoLocation}<br>
+       maxDecibel: ${maxDecibel}<br>
+       image: ${imageCloud ? `<a href="${imageCloud}">click here</a><br>` : `No Image`}<br> 
+       audio:  ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
+       video: ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
+       liveImage: ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
+       liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
+       liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
+       ComplaintNumber: ${complaintNumber} <br>
+       <br>
+       Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
+       <br>
+       Thank you for your prompt attention to this matter.
+       <br> <br>   
+     <br><br>
+     </p>
+     
+     <div>`
+     
+    let resp2 = emailTemp(data2, 'Complaints tracker   : New Submission')
+
+
+    const receivers2 = [
+     {
+       email: 'jolaoluwa@gmail.com'
+     }
+   ]
+
+       await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp);
+       await sendEmail(req, res, email, receivers2, 'Complaints tracker : New Submission', resp2);
+
+
+
+       res.status(200).json({
+           status: 200,
+           success: true,
+           data: profile
+       })
+   })
+   return
+
+
+  }
+
+
 } catch (error) {
   console.log(error)
     // res.status(500).json({
