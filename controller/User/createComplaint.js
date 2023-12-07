@@ -452,32 +452,26 @@ const compositeImageBuffer =
        <strong>Timestamp :</strong>  ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
        <strong>imageTimestamp:</strong>  ${geoLocation}<br>
       
+       <strong>liveImage:</strong>  ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
        
-       <strong>Audio:</strong>   ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
-       <br>
-       <br>
+       <strong>ComplaintNumber:</strong>  ${complaintNumber} <br>
+
+
        <strong style="text-decoration: underline">Video Files</strong>
        <div>
-       <strong>liveVideoCloud:</strong>  ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
+       <strong>liveVideoCloud:</strong>  ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a>` : `No Live Video`}<br>
        <strong>video:</strong>  ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
-       <strong>maxDecibelVideo:</strong>  ${videoCloud || liveVideoCloud ? Number(maxDecibel) + 9 : `No Video`}<br>
+       <strong>maxDecibelVideo:</strong>  ${videoCloud || liveVideoCloud ? Number(maxDecibel.split(' ')[0]) + 9 : `No Video`}<br>
        </div>
-       <br>
-       <br>
-
-       <br>
-       <br>
+      
        <strong style="text-decoration: underline">Audio Files</strong>
        <div>
-       <strong>liveAudioCloud:</strong>   ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
+       <strong>liveAudioCloud:</strong>   ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a>` : `No Live Audio`}<br>
+       <strong>UploadedAudio:</strong>   ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
        <strong>image:</strong>  ${evidenceIma ? `<a href="${evidenceIma}">click here</a><br>` : `No Image`}<br> 
        <strong>maxDecibelAudio:</strong>  ${maxDecibel}<br>
        </div>
         <br>
-       <br>
-       <strong>liveImage:</strong>  ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
-       
-       <strong>ComplaintNumber:</strong>  ${complaintNumber} <br>
        <br>
        Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
        <br>
@@ -629,30 +623,24 @@ const compositeImageBuffer =
       
        
        <strong>Audio:</strong>   ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
-       <br>
-       <br>
+    
+       <strong>liveImage:</strong>  ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
+       
+       <strong>ComplaintNumber:</strong>  ${complaintNumber} <br>
        <strong style="text-decoration: underline">Video Files</strong>
        <div>
-       <strong>liveVideoCloud:</strong>  ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
+       <strong>liveVideoCloud:</strong>  ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a>` : `No Live Video`}<br>
        <strong>video:</strong>  ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
-       <strong>maxDecibelVideo:</strong>  ${videoCloud || liveVideoCloud ? Number(maxDecibel) + 9 : `No Video`}<br>
+       <strong>maxDecibelVideo:</strong>  ${videoCloud || liveVideoCloud ? Number(maxDecibel.split(' ')[0]) + 9 : `No Video`}<br>
        </div>
-       <br>
-       <br>
-
-       <br>
-       <br>
+      
        <strong style="text-decoration: underline">Audio Files</strong>
        <div>
-       <strong>liveAudioCloud:</strong>   ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
+       <strong>liveAudioCloud:</strong>   ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a>` : `No Live Audio`}<br>
        <strong>image:</strong>  ${evidenceIma ? `<a href="${evidenceIma}">click here</a><br>` : `No Image`}<br> 
        <strong>maxDecibelAudio:</strong>  ${maxDecibel}<br>
        </div>
         <br>
-       <br>
-       <strong>liveImage:</strong>  ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
-       
-       <strong>ComplaintNumber:</strong>  ${complaintNumber} <br>
        <br>
        Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
        <br>
