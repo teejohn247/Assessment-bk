@@ -283,7 +283,7 @@ const svgImage = `
       Location: ${geoLocation}
       </text>
       <text x="100%" y="100%"  dy="-50%" dx="-40px" fill="white" font-size="50px" font-family="Arial, sans-serif" text-anchor="end" dominant-baseline="hanging" class="title">
-      Timestamp : ${moment().tz('Africa/Lagos').format('llll')}<br>
+      Date: ${moment().format('llll')}
       </text>
 
     </svg>
@@ -397,7 +397,7 @@ const compositeImageBuffer =
        <br> <br>
        Thank you for being an active participant in environmental stewardship.
        <br> <br>
-       Timestamp : ${moment().tz('Africa/Lagos').format('MMMM Do YYYY, h:mm:ss a')}
+       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
        ComplaintNumber: ${complaintNumber}
        liveImage: ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
        <br><br>
@@ -449,7 +449,7 @@ const compositeImageBuffer =
        Entries: ${entries}<br>
        Previous Complaint Number:${previousComplaintNumber}<br>
        Additional Comments: ${additionalComments}<br>
-       Timestamp : ${moment().tz('Africa/Lagos').format('MMMM Do YYYY, h:mm:ss a')}<br>
+       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
        imageTimestamp: ${geoLocation}<br>
        maxDecibelAudio: ${maxDecibel}<br>
        maxDecibelVideo: ${videoCloud ? Number(maxDecibel) + 2 : `No Video`}<br>
@@ -554,9 +554,9 @@ const compositeImageBuffer =
        <br> <br>
        Thank you for being an active participant in environmental stewardship.
        <br> <br>
-       Timestamp : ${moment().tz('Africa/Lagos').format('MMMM Do YYYY, h:mm:ss a')}<br>
+       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
        ComplaintNumber: ${complaintNumber}
-       
+       liveImage: ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
        <br><br>
        </p>
        
@@ -605,7 +605,7 @@ const compositeImageBuffer =
        Entries: ${entries}<br>
        Previous Complaint Number:${previousComplaintNumber}<br>
        Additional Comments: ${additionalComments}<br>
-       Timestamp : ${moment().tz('Africa/Lagos').format('MMMM Do YYYY, h:mm:ss a')}<br>
+       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
        imageTimestamp: ${geoLocation}<br>
        maxDecibelAudio: ${maxDecibel}<br>
        maxDecibelVideo: ${Number(maxDecibel) + 2}<br>
@@ -626,7 +626,7 @@ const compositeImageBuffer =
      
      <div>`
      
-    let resp2 = emailTemp(data2, 'Complaints tracker: New Submission')
+    let resp2 = emailTemp(data2, 'Complaints tracker   : New Submission')
 
 
     const receivers2 = [
