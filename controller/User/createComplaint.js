@@ -242,10 +242,14 @@ if(evidencePictures){
 
   }
 
+  var promises = [];
+
   promises.push(evidencePictures, evidenceVideo, liveAudio, liveImage, evidenceIma);
 
   Promise.all(promises).then(async function () {
     if(liveImage){
+
+      console.log(liveImage, '123')
 
 
       let newPath = path.join(publicDirPath, liveImage.name);
@@ -388,7 +392,6 @@ if(evidencePictures){
              <p style="padding: 32px 0; text-align: left !important; font-weight: 700; font-size: 20px;font-family: 'DM Sans';">
              Hi ${firstName},
              </p> 
-      
              <p style="font-size: 16px; text-align: left !important; font-weight: 300;">
              Thank you for taking the initiative to report environmental pollution in Lagos State. Your feedback is crucial in our efforts to maintain a healthy and sustainable environment.
              <br> <br>
@@ -436,7 +439,7 @@ if(evidencePictures){
              *Complaint Details:*
             <br>
         
-      <br>
+            <br>
              Title : ${title} <br>
              <strong>First Name:</strong> ${firstName} <br>
              <strong>Last Name: </strong> ${lastName} <br>
