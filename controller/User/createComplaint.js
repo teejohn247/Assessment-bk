@@ -160,8 +160,7 @@ if(evidencePictures){
          }
         </style>
   
-        <text x="20" y="35" class="small">My</text>
-        <text x="40" y="35" class="heavy">cat</text>
+       
         <text  x="100%" y="100%" dy="-180px" dx="-40px" fill="white" font-size="50px" font-family="Arial, sans-serif" text-anchor="end" dominant-baseline="hanging" class="title">
         Location: ${geoLocation}
         </text>
@@ -279,13 +278,12 @@ const svgImage = `
        }
       </style>
 
-      <text x="20" y="35" class="small">My</text>
-      <text x="40" y="35" class="heavy">cat</text>
+    
       <text  x="100%" y="100%" dy="-180px" dx="-40px" fill="white" font-size="50px" font-family="Arial, sans-serif" text-anchor="end" dominant-baseline="hanging" class="title">
       Location: ${geoLocation}
       </text>
       <text x="100%" y="100%"  dy="-50%" dx="-40px" fill="white" font-size="50px" font-family="Arial, sans-serif" text-anchor="end" dominant-baseline="hanging" class="title">
-      Date: ${moment().format('llll')}
+      Timestamp : ${moment().tz('Africa/Lagos').format('llll')}<br>
       </text>
 
     </svg>
@@ -399,7 +397,7 @@ const compositeImageBuffer =
        <br> <br>
        Thank you for being an active participant in environmental stewardship.
        <br> <br>
-       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
+       Timestamp : ${moment().tz('Africa/Lagos').format('MMMM Do YYYY, h:mm:ss a')}
        ComplaintNumber: ${complaintNumber}
        liveImage: ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
        <br><br>
@@ -451,9 +449,10 @@ const compositeImageBuffer =
        Entries: ${entries}<br>
        Previous Complaint Number:${previousComplaintNumber}<br>
        Additional Comments: ${additionalComments}<br>
-       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
+       Timestamp : ${moment().tz('Africa/Lagos').format('MMMM Do YYYY, h:mm:ss a')}<br>
        imageTimestamp: ${geoLocation}<br>
-       maxDecibel: ${maxDecibel}<br>
+       maxDecibelAudio: ${maxDecibel}<br>
+       maxDecibelVideo: ${videoCloud ? Number(maxDecibel) + 2 : `No Video`}<br>
        image: ${evidenceIma ? `<a href="${evidenceIma}">click here</a><br>` : `No Image`}<br> 
        audio:  ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
        video: ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
@@ -555,9 +554,9 @@ const compositeImageBuffer =
        <br> <br>
        Thank you for being an active participant in environmental stewardship.
        <br> <br>
-       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}
+       Timestamp : ${moment().tz('Africa/Lagos').format('MMMM Do YYYY, h:mm:ss a')}<br>
        ComplaintNumber: ${complaintNumber}
-       liveImage: ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
+       
        <br><br>
        </p>
        
@@ -606,7 +605,7 @@ const compositeImageBuffer =
        Entries: ${entries}<br>
        Previous Complaint Number:${previousComplaintNumber}<br>
        Additional Comments: ${additionalComments}<br>
-       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
+       Timestamp : ${moment().tz('Africa/Lagos').format('MMMM Do YYYY, h:mm:ss a')}<br>
        imageTimestamp: ${geoLocation}<br>
        maxDecibelAudio: ${maxDecibel}<br>
        maxDecibelVideo: ${Number(maxDecibel) + 2}<br>
@@ -627,7 +626,7 @@ const compositeImageBuffer =
      
      <div>`
      
-    let resp2 = emailTemp(data2, 'Complaints tracker   : New Submission')
+    let resp2 = emailTemp(data2, 'Complaints tracker: New Submission')
 
 
     const receivers2 = [
