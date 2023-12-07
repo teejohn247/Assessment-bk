@@ -124,13 +124,14 @@ console.log({liveImage})
 
 
 async function processEvidencePictures() {
+  return new Promise((resolve, reject) => {
 if(evidencePictures){
 
 
   let newPath = path.join(publicDirPath, evidencePictures.name);
   let rawData = fs.readFileSync(evidencePictures.path);
   
-  fs.writeFile(newPath, rawData, async function (err) {
+   fs.writeFile(newPath, rawData, async function (err) {
       if (err) {
           console.error("Error writing file:", err);
           return res.status(500).send("Error writing file");
@@ -232,6 +233,7 @@ if(evidencePictures){
 
      console.log({evidencePictures})
      console.log({evidenceIma})
+     resolve()
 
 
 
@@ -241,13 +243,14 @@ if(evidencePictures){
 
 
   }
+})
 }
 
+
 await processEvidencePictures().then(async function () {
+  
+  console.log(evidenceIma, '123')
     if(liveImage){
-
-      console.log(liveImage, '123')
-
 
       let newPath = path.join(publicDirPath, liveImage.name);
       let rawData = fs.readFileSync(liveImage.path);
