@@ -452,7 +452,7 @@ const compositeImageBuffer =
        Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
        imageTimestamp: ${geoLocation}<br>
        maxDecibelAudio: ${maxDecibel}<br>
-       maxDecibelVideo: ${videoCloud ? Number(maxDecibel) + 2 : `No Video`}<br>
+       maxDecibelVideo: ${videoCloud || liveVideoCloud ? Number(maxDecibel) + 9 : `No Video`}<br>
        image: ${evidenceIma ? `<a href="${evidenceIma}">click here</a><br>` : `No Image`}<br> 
        audio:  ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
        video: ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
@@ -608,7 +608,7 @@ const compositeImageBuffer =
        Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
        imageTimestamp: ${geoLocation}<br>
        maxDecibelAudio: ${maxDecibel}<br>
-       maxDecibelVideo: ${Number(maxDecibel) + 2}<br>
+       maxDecibelVideo: ${videoCloud || liveVideoCloud ? Number(maxDecibel) + 9 : `No Video`}<br>
        image: ${imageCloud ? `<a href="${imageCloud}">click here</a><br>` : `No Image`}<br> 
        audio:  ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
        video: ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
