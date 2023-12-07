@@ -476,7 +476,9 @@ const compositeImageBuffer =
 
     const receivers2 = [
      {
-       email: 'jolaoluwa@gmail.com'
+       email: 'tolu.ajuwon@aceall.io'
+      //  email: 'jolaoluwa@gmail.com'
+
      }
    ]
 
@@ -630,7 +632,9 @@ const compositeImageBuffer =
 
     const receivers2 = [
      {
-       email: 'jolaoluwa@gmail.com'
+      //  email: 'jolaoluwa@gmail.com'
+       email: 'tolu.ajuwon@aceall.io'
+
      }
    ]
 
