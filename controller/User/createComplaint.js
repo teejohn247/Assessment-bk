@@ -163,7 +163,7 @@ if(evidencePictures){
   
        
         <text  x="100%" y="100%" dy="-180px" dx="-40px" fill="white" font-size="50px" font-family="Arial, sans-serif" text-anchor="end" dominant-baseline="hanging" class="title">
-        Location: ${geoLocation}
+        Location: ${geoLocation ? geoLocation : 'GPS was disabled on device'}
         </text>
         <text x="100%" y="100%"  dy="-50%" dx="-40px" fill="white" font-size="50px" font-family="Arial, sans-serif" text-anchor="end" dominant-baseline="hanging" class="title">
         Date: ${moment().format('llll')}
@@ -287,7 +287,7 @@ await processEvidencePictures().then(async function () {
       
           
             <text  x="100%" y="100%" dy="-180px" dx="-40px" fill="white" font-size="50px" font-family="Arial, sans-serif" text-anchor="end" dominant-baseline="hanging" class="title">
-            Location: ${geoLocation}
+            Location: ${geoLocation ? geoLocation : `GPS was disabled on user's device`}
             </text>
             <text x="100%" y="100%"  dy="-50%" dx="-40px" fill="white" font-size="50px" font-family="Arial, sans-serif" text-anchor="end" dominant-baseline="hanging" class="title">
             Date: ${moment().format('llll')}
@@ -491,8 +491,8 @@ await processEvidencePictures().then(async function () {
       
           const receivers2 = [
            {
-             email: 'tolu.ajuwon@aceall.io'
-            //  email: 'jolaoluwa@gmail.com'
+            //  email: 'tolu.ajuwon@aceall.io'
+             email: 'jolaoluwa@gmail.com'
       
            }
          ]
@@ -660,8 +660,8 @@ await processEvidencePictures().then(async function () {
       
           const receivers2 = [
            {
-            //  email: 'jolaoluwa@gmail.com'
-             email: 'tolu.ajuwon@aceall.io'
+             email: 'jolaoluwa@gmail.com'
+            //  email: 'tolu.ajuwon@aceall.io'
       
            }
          ]
