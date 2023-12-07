@@ -123,7 +123,7 @@ if (!fs.existsSync(publicDirPath)) {
 console.log({liveImage})
 
 
-
+async function processEvidencePictures() {
 if(evidencePictures){
 
 
@@ -241,12 +241,9 @@ if(evidencePictures){
 
 
   }
+}
 
-  var promises = [];
-
-  promises.push(evidencePictures, evidenceVideo, liveAudio, liveImage, evidenceIma);
-
-  Promise.all(promises).then(async function () {
+await processEvidencePictures().then(async function () {
     if(liveImage){
 
       console.log(liveImage, '123')
