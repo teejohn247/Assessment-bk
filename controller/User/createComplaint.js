@@ -435,31 +435,49 @@ const compositeImageBuffer =
   
 <br>
        Title : ${title} <br>
-       First Name: ${firstName} <br>
-       Last Name: ${lastName} <br>
-       Phone Number: ${phoneNumber}<br>
-       Email: ${email}<br>
-       Lasrra Number: ${lasaraaNumber}<br>
-       Type of Pollution: ${typeOfPollution}<br>
-       Type of Organization Causing Pollution: ${typeOfOrganizationCausingPollution}<br>
-       Source of Pollution: ${sourceOfPollution}<br>
-       Address of the Pollution: ${addressOfThePollution}<br>
-       LGA: ${lga}<br>
-       Brief Description of Noise Complaint: ${briefDescriptionOfNoiseComplaint}<br>
-       Entries: ${entries}<br>
-       Previous Complaint Number:${previousComplaintNumber}<br>
-       Additional Comments: ${additionalComments}<br>
-       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
-       imageTimestamp: ${geoLocation}<br>
-       maxDecibelAudio: ${maxDecibel}<br>
-       maxDecibelVideo: ${videoCloud || liveVideoCloud ? Number(maxDecibel) + 9 : `No Video`}<br>
-       image: ${evidenceIma ? `<a href="${evidenceIma}">click here</a><br>` : `No Image`}<br> 
-       audio:  ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
-       video: ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
-       liveImage: ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
-       liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
-       liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
-       ComplaintNumber: ${complaintNumber} <br>
+       <strong>First Name:</strong> ${firstName} <br>
+       <strong>Last Name: </strong> ${lastName} <br>
+       <strong>Phone Number: </strong> ${phoneNumber}<br>
+       <strong>Email: </strong> ${email}<br>
+       <strong>Lasrra Number:</strong>  ${lasaraaNumber}<br>
+       <strong>Type of Pollution:</strong>  ${typeOfPollution}<br>
+       <strong>Type of Organization Causing Pollution:</strong>  ${typeOfOrganizationCausingPollution}<br>
+       <strong>Source of Pollution:</strong>  ${sourceOfPollution}<br>
+       <strong>Address of the Pollution:</strong>  ${addressOfThePollution}<br>
+       <strong>LGA: </strong> ${lga}<br>
+       <strong>Brief Description of Noise Complaint: </strong> ${briefDescriptionOfNoiseComplaint}<br>
+       <strong>Entries: </strong> ${entries}<br>
+       <strong>Previous Complaint Number:</strong> ${previousComplaintNumber}<br>
+       <strong>Additional Comments:</strong>  ${additionalComments}<br>
+       <strong>Timestamp :</strong>  ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
+       <strong>imageTimestamp:</strong>  ${geoLocation}<br>
+      
+       
+       <strong>Audio:</strong>   ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
+       <br>
+       <br>
+       <strong style="text-decoration: underline">Video Files</strong>
+       <div>
+       <strong>liveVideoCloud:</strong>  ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
+       <strong>video:</strong>  ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
+       <strong>maxDecibelVideo:</strong>  ${videoCloud || liveVideoCloud ? Number(maxDecibel) + 9 : `No Video`}<br>
+       </div>
+       <br>
+       <br>
+
+       <br>
+       <br>
+       <strong style="text-decoration: underline">Audio Files</strong>
+       <div>
+       <strong>liveAudioCloud:</strong>   ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
+       <strong>image:</strong>  ${evidenceIma ? `<a href="${evidenceIma}">click here</a><br>` : `No Image`}<br> 
+       <strong>maxDecibelAudio:</strong>  ${maxDecibel}<br>
+       </div>
+        <br>
+       <br>
+       <strong>liveImage:</strong>  ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
+       
+       <strong>ComplaintNumber:</strong>  ${complaintNumber} <br>
        <br>
        Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
        <br>
@@ -589,33 +607,52 @@ const compositeImageBuffer =
        <br> <br>
        *Complaint Details:*
       <br>
-      <br>
+  
+<br>
        Title : ${title} <br>
-       First Name: ${firstName} <br>
-       Last Name: ${lastName} <br>
-       Phone Number: ${phoneNumber}<br>
-       Email: ${email}<br>
-       Lasrra Number: ${lasaraaNumber}<br>
-       Type of Pollution: ${typeOfPollution}<br>
-       Type of Organization Causing Pollution: ${typeOfOrganizationCausingPollution}<br>
-       Source of Pollution: ${sourceOfPollution}<br>
-       Address of the Pollution: ${addressOfThePollution}<br>
-       LGA: ${lga}<br>
-       Brief Description of Noise Complaint: ${briefDescriptionOfNoiseComplaint}<br>
-       Entries: ${entries}<br>
-       Previous Complaint Number:${previousComplaintNumber}<br>
-       Additional Comments: ${additionalComments}<br>
-       Timestamp : ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
-       imageTimestamp: ${geoLocation}<br>
-       maxDecibelAudio: ${maxDecibel}<br>
-       maxDecibelVideo: ${videoCloud || liveVideoCloud ? Number(maxDecibel) + 9 : `No Video`}<br>
-       image: ${imageCloud ? `<a href="${imageCloud}">click here</a><br>` : `No Image`}<br> 
-       audio:  ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
-       video: ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
-       liveImage: ${evidenceIma ? `<a href="${evidenceIma}">click here</a><br>` : `No Captured Image`}<br>
-       liveVideoCloud: ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
-       liveAudioCloud:  ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
-       ComplaintNumber: ${complaintNumber} <br>
+       <strong>First Name:</strong> ${firstName} <br>
+       <strong>Last Name: </strong> ${lastName} <br>
+       <strong>Phone Number: </strong> ${phoneNumber}<br>
+       <strong>Email: </strong> ${email}<br>
+       <strong>Lasrra Number:</strong>  ${lasaraaNumber}<br>
+       <strong>Type of Pollution:</strong>  ${typeOfPollution}<br>
+       <strong>Type of Organization Causing Pollution:</strong>  ${typeOfOrganizationCausingPollution}<br>
+       <strong>Source of Pollution:</strong>  ${sourceOfPollution}<br>
+       <strong>Address of the Pollution:</strong>  ${addressOfThePollution}<br>
+       <strong>LGA: </strong> ${lga}<br>
+       <strong>Brief Description of Noise Complaint: </strong> ${briefDescriptionOfNoiseComplaint}<br>
+       <strong>Entries: </strong> ${entries}<br>
+       <strong>Previous Complaint Number:</strong> ${previousComplaintNumber}<br>
+       <strong>Additional Comments:</strong>  ${additionalComments}<br>
+       <strong>Timestamp :</strong>  ${moment().format('MMMM Do YYYY, h:mm:ss a')}<br>
+       <strong>imageTimestamp:</strong>  ${geoLocation}<br>
+      
+       
+       <strong>Audio:</strong>   ${audioCloud ? `<a href="${audioCloud}">click here</a><br>` : `No Audio`}<br>
+       <br>
+       <br>
+       <strong style="text-decoration: underline">Video Files</strong>
+       <div>
+       <strong>liveVideoCloud:</strong>  ${liveVideoCloud ? `<a href="${liveVideoCloud}">click here</a><br>` : `No Live Video`}<br>
+       <strong>video:</strong>  ${videoCloud ? `<a href="${videoCloud}">click here</a><br>` : `No Video`}<br> 
+       <strong>maxDecibelVideo:</strong>  ${videoCloud || liveVideoCloud ? Number(maxDecibel) + 9 : `No Video`}<br>
+       </div>
+       <br>
+       <br>
+
+       <br>
+       <br>
+       <strong style="text-decoration: underline">Audio Files</strong>
+       <div>
+       <strong>liveAudioCloud:</strong>   ${liveAudioCloud ? `<a href="${liveAudioCloud}">click here</a><br>` : `No Live Audio`}<br>
+       <strong>image:</strong>  ${evidenceIma ? `<a href="${evidenceIma}">click here</a><br>` : `No Image`}<br> 
+       <strong>maxDecibelAudio:</strong>  ${maxDecibel}<br>
+       </div>
+        <br>
+       <br>
+       <strong>liveImage:</strong>  ${geoImage ? `<a href="${geoImage}">click here</a><br>` : `No Captured Image`}<br>
+       
+       <strong>ComplaintNumber:</strong>  ${complaintNumber} <br>
        <br>
        Please take appropriate action to investigate and address the reported issue. If additional information is required, consider reaching out to the complainant for clarification.
        <br>
