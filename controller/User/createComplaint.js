@@ -496,8 +496,8 @@ await processEvidencePictures().then(async function () {
       
           const receivers2 = [
            {
-             email: 'tolu.ajuwon@aceall.io'
-            //  email: 'jolaoluwa@gmail.com'
+            //  email: 'tolu.ajuwon@aceall.io'
+             email: 'jolaoluwa@gmail.com'
       
            }
          ]
@@ -667,8 +667,8 @@ await processEvidencePictures().then(async function () {
       
           const receivers2 = [
            {
-            //  email: 'jolaoluwa@gmail.com'
-             email: 'tolu.ajuwon@aceall.io'
+             email: 'jolaoluwa@gmail.com'
+            //  email: 'tolu.ajuwon@aceall.io'
       
            }
          ]
@@ -937,8 +937,8 @@ await processEvidencePictures().then(async function () {
       
           const receivers2 = [
            {
-             email: 'tolu.ajuwon@aceall.io'
-            //  email: 'jolaoluwa@gmail.com'
+            //  email: 'tolu.ajuwon@aceall.io'
+             email: 'jolaoluwa@gmail.com'
       
            }
          ]
@@ -1107,8 +1107,8 @@ await processEvidencePictures().then(async function () {
       
           const receivers2 = [
            {
-            //  email: 'jolaoluwa@gmail.com'
-             email: 'tolu.ajuwon@aceall.io'
+             email: 'jolaoluwa@gmail.com'
+            //  email: 'tolu.ajuwon@aceall.io'
       
            }
          ]
