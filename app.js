@@ -120,6 +120,10 @@ app.post('/upload-img', (req, res) => {
 
 app.use('/api/v1', userRouter);
 
-server.listen(process.env.PORT || 2000, () => console.log(`Server has started. ${port}`));
+server.listen(process.env.PORT || 2000, () => {
+  server.timeout = 60000;
+  console.log(`Server has started. ${port}`)
+})
+
 
 export default app;
