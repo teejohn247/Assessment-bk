@@ -13,7 +13,8 @@ import got from "got";
 import axios from "axios";
 import LocalFileData from 'get-file-object-from-local-path'
 import uploadWaterMark from '../../middleware/watermarkedImage';
-
+const stream = require('stream');
+const { Readable } = require('stream');
 
 
 const path= require('path');
@@ -708,21 +709,14 @@ if(evidencePictures){
       let newPath = path.join(publicDirPath, liveImage.name);
       let rawData = fs.readFileSync(liveImage.path);
       
-      fs.writeFile(newPath, rawData, async function (err) {
-          if (err) {
-              console.error("Error writing file:", err);
-              return res.status(500).send("Error writing file");
-          }
+      // fs.writeFile(newPath, rawData, async function (err) {
+          // if (err) {
+          //     console.error("Error writing file:", err);
+          //     return res.status(500).send("Error writing file");
+          // }
           
       console.log('text')
-
-
-
         await processEvidencePictures()
-
-        
-    
-      
       const text = 'Your Text';
       // const width = 300; // Set the desired width
       // const height = 300; // Set the desired height
@@ -782,25 +776,47 @@ if(evidencePictures){
         let filee = `public/${Date.now()}.png`
         let fileName = `${Date.now()}.png`
       
-        const compositeImagePath = path.join("public", `image_${Date.now()}.png`);
-      const compositeImageBuffer =
-       await sharp(resizedImageBuffer)
-        .composite([
-          {
+        // const compositeImagePath = path.join("public", `image_${Date.now()}.png`);
+     
+
+      // const compositeImageBuffer =
+      //  await sharp(resizedImageBuffer)
+      //   .composite([
+      //     {
+      //       input: svgBuffer,
+      //       gravity: 'southeast',
+      //       offset: {
+      //         left: 100,
+      //         bottom: 100,
+      //       },
+      //     },
+      //   ])
+      //   .toFile(filee);
+
+        const compositeImageBuffer = await sharp(resizedImageBuffer)
+    .composite([
+        {
             input: svgBuffer,
             gravity: 'southeast',
             offset: {
-              left: 100,
-              bottom: 100,
+                left: 100,
+                bottom: 100,
             },
-          },
-        ])
-        .toFile(filee);
+        },
+    ])
+    .toBuffer(); // Get the composite image buffer directly
       
-        // console.log({filee})
-        const data = fs.createReadStream(filee);
-        console.log({data})
-      
+        console.log({filee})
+
+        const compositeImageStream = new Readable();
+        compositeImageStream.push(compositeImageBuffer);
+        compositeImageStream.push(null);
+
+        console.log({compositeImageStream})
+
+        // const data = fs.createReadStream(filee);
+
+        // console.log({data}, "tttttt")
         console.log({compositeImageBuffer})
       
         let images= {
@@ -808,11 +824,10 @@ if(evidencePictures){
              name: fileName
         }
       
-        
-      
-        if(data){
-          geoImage = await uploadWaterMark(data, images);
-         }
+        geoImage = await uploadWaterMark(compositeImageBuffer, images);
+
+        console.log({geoImage})
+  
       
          console.log({res})
          let user = new User({
@@ -973,7 +988,7 @@ if(evidencePictures){
          return
       
       
-      })
+      // })
       } else {
 
         await processEvidencePictures()
