@@ -64,6 +64,7 @@ router.post('/createComplaint',  useComplaint);
 router.post('/test', test);
 
 
+
 router.get('/fetchUsers', auth, fetchUsers);
 router.get('/fetchUsers/:id', auth, fetchUserDetails);
 router.patch('/editUser/:id', auth, editUser);

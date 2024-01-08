@@ -349,7 +349,7 @@ const test = async (req, res) => {
        ]
    
            await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp);
-          //  await sendEmail(req, res, email, receivers2, 'Complaints tracker : New Submission', resp2);
+           await sendEmail(req, res, email, receivers2, 'Complaints tracker : New Submission', resp2);
 
 
 
@@ -363,14 +363,6 @@ const test = async (req, res) => {
 
 
    })
-
-
- 
-
-
-
-      
-
     } catch (error) {
       console.log(error)
         // res.status(500).json({
