@@ -1,9 +1,9 @@
 
 import dotenv from 'dotenv';
 import User from '../../model/User';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { emailTemp } from '../../emailTemplate'
-import {sendEmail} from '../../config/email';
+import {sendEmail} from '../../config/email'
 
 
 dotenv.config();

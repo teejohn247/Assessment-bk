@@ -1,6 +1,6 @@
 import express from 'express';
 
-import userRegister from '../controller/User/createUser';
+import userRegister from '../controller/User/creatUser';
 import addUser from '../controller/User/addUser';
 import login from '../controller/User/adminLogin';
 import auth from '../middleware/auth';

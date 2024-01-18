@@ -5,12 +5,7 @@ let db;
 
 const UserSchema = new mongoose.Schema(
   {
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    firstName: {
+    firstName : {
       type: String,
       required: true,
     },
@@ -18,28 +13,27 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     password: {
       type: String,
       default: '',
     },
-    admin: {
+    role: {
       type: String,
-    },
-    adminId: {
-      type: String,
-    },
-    approved: {
-      type: Boolean,
-      default: false
-
-    },
-    isAdmin: {
-      type: Boolean,
-      default: false
-
-    },
+      default: 'zonalHead',
+      enum: ['director', 'superAdmin', 'zonalHead']
+    }
+    
   },
   { timestamps: true },
 );
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = UserSchema;
+
+
+
+module.exports = mongoose.model("LasepaUser", UserSchema);

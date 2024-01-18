@@ -1,7 +1,6 @@
 
 import dotenv from 'dotenv';
 import User from '../../model/Lasepa';
-import bcrypt from 'bcrypt';
 import { sendEmail } from '../../config/email';
 import cloudinary from '../../config/cloudinary';
 import { emailTemp } from '../../emailTemplate';
