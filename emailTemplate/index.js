@@ -1,137 +1,58 @@
 export const emailTemp = (data, subject) => {
 
-    // We noticed a new sign-in to your account using ${detectResult.client.name} version ${detectResult.client.version} 
-    // <br><br>
-    // on a ${detectResult.os.family} version ${detectResult.os.version} ${moment(new Date())} <br><br>
-
-return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login Invitation Email</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Inter:wght@300;400&display=swap"
-          rel="stylesheet">
-    <style>
-        p {
-            margin: 0;
-        }
-        .wrapper {
-            font-family: "Inter";
-            font-size: 0;
-            text-align: center;
-            width: 100%;
-            table-layout: fixed;
-            background-color: #FFFFFF;
-            padding-bottom: 120px;
-        }
-
-        .main {
-            background-color: #ffffff;
-            width: 100%;
-            margin: 0 auto;
-            max-width: 600px;
-            border-spacing: 0;
-            color: #000000;
-            position: relative;
-        }
-
-        .header {
-            text-align: left;
-            vertical-align: top;
-        }
-
-        .header > td {
-            padding-left: 10%;
-        }
-
-        .header-text {
-            font-weight: 600;
-            font-size: 24px;
-            line-height: 125%;
-            margin-top: 30px;
-            padding:15px;
-        }
-
-        .email-body {
-            background-color: #ffffff;
-            box-shadow: 0px 0px 60px 1px rgba(0, 0, 0, 0.1);
-            color: #000000;
-            height: auto;
-            width: 80%;
-            max-width: 480px;
-            position: relative;
-            top: -118px;
-            margin: 0 auto;
-            font-size: 16px;
-            text-align: left;
-        }
-
-        @media screen and (max-width: 480px) {
-            .header-text {
-                font-size: 24px;
-            }
-        }
-
-    </style>
-</head>
-<body>
-<div class="wrapper">
-    <table class="main">
-        <!--	HEADER SECTION		-->
-        <tr class="header">
-            <td height="305" style="background-color: #166A37; color: #ffffff; width: 100%">
-                <div style="padding-top: 24px;">
-                    <a href="#">
-                    <img src="https://www.lasepa.gov.ng/wp-content/uploads/2019/12/las-d.png" title="Lasepa Logo" alt="Lasepa Logo" width="503"/>
-                    </a>
-                </div>
-                <h1 class="header-text">${subject}</h1>
-            </td>
-        </tr>
-
-        <!--			BODY SECTION-->
-        <tr style="height: 455px; background-color: #E5E5E5;position: relative;">
-            <td>
-                <div>
-                    <div class="email-body">
-                        <div style="padding: 32px">
-                        ${data}
-                            <p style="font-family: 'DM Sans'; padding-top: 32px; line-height: 24px;font-size: 16px;">
-                                Cheers,
-                            </p>
-                            <p style="font-family: 'DM Sans'; line-height: 24px;font-size: 16px;">
-                                LASEPA
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-        <!--FOOTER SECTION-->
-        <tr>
-            <td style="background-color: #F2F5F9;  padding: 56px 0; font-size: 16px; vertical-align: middle">
-                <div style="margin: 0 auto;">
-                    <p>Phone: 080890898756</p>
-                    <p style="padding-top: 12px">Email: contactus@Lasepa.com</p>
-                    <div style="padding-top: 12px">
-                      
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
-
-</body>
-</html>`
-
+    return  `<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Lasepa</title>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+        </head>
+        <body style="margin: 0; padding: 0; font-family: 'Inter', Arial, sans-serif">
+            <table style="background-color: #f1fbff; max-width: 900px; margin: 0 auto" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <table
+                            style="
+                                background: url('https://main.d3usmo4yxhscgv.amplifyapp.com/assets/bg-MDFy6LPG.jpg') center top no-repeat;
+                                background-size: cover;
+                                height: 12.5rem;
+                                text-align: center;
+                                vertical-align: middle;
+                                padding-top: 2.5rem;
+                                margin: 0 auto;
+                                width: 100%;
+                            "
+                            cellspacing="0"
+                            cellpadding="0"
+                        >
+                            <tr>
+                                <td>
+                                    <img
+                                        src="https://www.lasepa.gov.ng/wp-content/uploads/2019/12/las-d.png"
+                                        alt="Company Logo"
+                                        style="max-width: 175px; max-height: 100%; margin: auto; display: block"
+                                    />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table style="background-color: #ffffff; width: 75%; margin: -1rem auto auto; padding: 20px" cellspacing="0" cellpadding="0" align="center">
+                            <tr>
+                                <td>${data}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; padding: 3rem 10px 2rem; color: #333333; opacity: 0.8">info@lasepa.com | 080890898756</td>
+                </tr>
+            </table>
+        </body>
+    </html>`
 
 }
-// module.exports = {
-//    emailTemp
-//   }

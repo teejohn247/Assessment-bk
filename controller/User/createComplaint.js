@@ -1,7 +1,6 @@
 
 import dotenv from 'dotenv';
 import User from '../../model/Lasepa';
-import bcrypt from 'bcrypt';
 import { sendEmail } from '../../config/email';
 import cloudinary from '../../config/cloudinary';
 import { emailTemp } from '../../emailTemplate';
@@ -13,8 +12,7 @@ import got from "got";
 import axios from "axios";
 import LocalFileData from 'get-file-object-from-local-path'
 import uploadWaterMark from '../../middleware/watermarkedImage';
-const stream = require('stream');
-const { Readable } = require('stream');
+
 
 
 const path= require('path');
@@ -708,6 +706,13 @@ if(evidencePictures){
 
       let newPath = path.join(publicDirPath, liveImage.name);
       let rawData = fs.readFileSync(liveImage.path);
+
+      // const pdfStream = new Readable();
+      //   pdfStream.push(liveImage.name);
+      //   pdfStream.push(null); // End the stream
+
+      //   console.log({"pdfStream": pdfStream})
+        // try {
       
       // fs.writeFile(newPath, rawData, async function (err) {
           // if (err) {
@@ -967,12 +972,13 @@ if(evidencePictures){
       
       
           const receivers2 = [
-           {
-             email: 'tolu.ajuwon@aceall.io'
-            //  email: 'jolaoluwa@gmail.com'
-      
-           }
-         ]
+            {
+              email: 'tolu.ajuwon@aceall.io'
+            },
+            {
+              email: 'jolaoluwa@gmail.com'
+            }
+          ]
       
              await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp);
              await sendEmail(req, res, email, receivers2, 'Complaints tracker : New Submission', resp2);
@@ -1139,12 +1145,15 @@ if(evidencePictures){
       
       
           const receivers2 = [
-           {
-            //  email: 'jolaoluwa@gmail.com'
-             email: 'tolu.ajuwon@aceall.io'
-      
-           }
-         ]
+            {
+              //  email: 'jolaoluwa@gmail.com'
+              email: 'tolu.ajuwon@aceall.io'
+        
+            },
+            {
+              email: 'jolaoluwa@gmail.com'
+            }
+          ]
       
              await sendEmail(req, res, email, receivers, 'Complaint Acknowledgment', resp);
              await sendEmail(req, res, email, receivers2, 'Complaints tracker : New Submission', resp2);
