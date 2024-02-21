@@ -31,6 +31,7 @@ const LasepaSchema = new mongoose.Schema(
     howDidYouHearAboutLasepa: { type: String,  },
     additionalComments: { type: String, },
     complaintNumber: { type: String, },
+    status: { type: String, default: 'Pending' }
 
   },
   { timestamps: true },

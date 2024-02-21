@@ -11,6 +11,8 @@ import deleteUser from '../controller/User/deleteUser';
 import useComplaint from '../controller/User/createComplaint';
 import addTextOnImage from '../controller/User/rounded';
 import test from '../controller/User/test';
+import fetchComplaints from '../controller/User/fetchComplaint';
+import fetchComplaintDetails from '../controller/User/fetchComplaintDetails';
 const multer  = require('multer');
 const path= require('path');
 const sharp = require('sharp');
@@ -59,32 +61,14 @@ router.post('/addUser', auth, addUser);
 router.post('/login', login);
 router.post('/text', addTextOnImage);
 
-
 router.post('/createComplaint',  useComplaint);
 router.post('/test', test);
-
-
-
+router.get('/fetchComplaints', fetchComplaints);
+router.get('/fetchComplaints/:id', fetchComplaintDetails);
 router.get('/fetchUsers', auth, fetchUsers);
 router.get('/fetchUsers/:id', auth, fetchUserDetails);
 router.patch('/editUser/:id', auth, editUser);
 router.delete('/deleteUser/:id', auth, deleteUser);
 
-// router.post('/createComplaint', (req, res) => {
-//     // Log the incoming request headers
 
-//     console.log(req.fields)
-//     console.log('Incoming request headers:', req.headers);
-
-//     // Check the Content-Type header
-//     const contentType = req.headers['content-type'];
-//     console.log('Content-Type:', contentType);
-
-//     // Process FormData here
-//     const formData = req.body;
-
-//     // Continue with your existing logic
-//     // ...
-
-// });
 export default router;
