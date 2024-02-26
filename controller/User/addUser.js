@@ -15,7 +15,7 @@ const addUser = async (req, res) => {
 
         console.log('trr')
 
-        const { firstName, email, lastName} = req.body;
+        const { firstName, email, lastName, lga, role} = req.body;
 
         let user = await User.findOne({ email });
         let admin = await User.findOne({ _id: req.payload.id });
@@ -103,6 +103,8 @@ const addUser = async (req, res) => {
         lastName,
         email: email,
         password: hashed,
+        lga,
+        role,
         admin: `${admin.firstName} ${admin.lastName}`,
         adminId: req.payload.id
     });

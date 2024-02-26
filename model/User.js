@@ -22,12 +22,15 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: '',
     },
+    lga: {
+      type: String,
+      required: true,
+    },
     role: {
       type: String,
       default: 'zonalHead',
       enum: ['director', 'superAdmin', 'zonalHead']
     }
-    
   },
   { timestamps: true },
 );
